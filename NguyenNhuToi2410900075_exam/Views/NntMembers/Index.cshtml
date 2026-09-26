@@ -1,0 +1,45 @@
+@model IEnumerable<NguyenNhuToi2410900075_exam.Models.NntMember>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Nnt Members</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birth Day</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.NntName</td>
+            <td>@item.NntGender</td>
+            <td>@(item.NntBirthDay.HasValue ? item.NntBirthDay.Value.ToString("yyyy-MM-dd") : "")</td>
+            <td>@item.NntEmail</td>
+            <td>@item.NntPhone</td>
+            <td>@(item.NntActive == true ? "Yes" : "No")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+@model NguyenNhuToi2410900075_exam.Models.NntMember
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NntMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NntName" class="control-label"></label>
+                <input asp-for="NntName" class="form-control" />
+                <span asp-validation-for="NntName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NntGender" class="control-label"></label>
+                <input asp-for="NntGender" class="form-control" />
+                <span asp-validation-for="NntGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NntBirthDay" class="control-label"></label>
+                <input asp-for="NntBirthDay" type="date" class="form-control" />
+                <span asp-validation-for="NntBirthDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NntEmail" class="control-label"></label>
+                <input asp-for="NntEmail" class="form-control" />
+                <span asp-validation-for="NntEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NntPhone" class="control-label"></label>
+                <input asp-for="NntPhone" class="form-control" />
+                <span asp-validation-for="NntPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <input asp-for="NntActive" class="form-check-input" />
+                <label asp-for="NntActive" class="form-check-label"></label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

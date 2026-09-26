@@ -1,0 +1,39 @@
+@model NguyenNhuToi2410900075_exam.Models.NntMember
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>NntMember</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Id</dt>
+        <dd class = "col-sm-10">@Model.Id</dd>
+
+        <dt class = "col-sm-2">Name</dt>
+        <dd class = "col-sm-10">@Model.NntName</dd>
+
+        <dt class = "col-sm-2">Gender</dt>
+        <dd class = "col-sm-10">@Model.NntGender</dd>
+
+        <dt class = "col-sm-2">Birth Day</dt>
+        <dd class = "col-sm-10">@(Model.NntBirthDay.HasValue ? Model.NntBirthDay.Value.ToString("yyyy-MM-dd") : "")</dd>
+
+        <dt class = "col-sm-2">Email</dt>
+        <dd class = "col-sm-10">@Model.NntEmail</dd>
+
+        <dt class = "col-sm-2">Phone</dt>
+        <dd class = "col-sm-10">@Model.NntPhone</dd>
+
+        <dt class = "col-sm-2">Active</dt>
+        <dd class = "col-sm-10">@(Model.NntActive == true ? "Yes" : "No")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>
