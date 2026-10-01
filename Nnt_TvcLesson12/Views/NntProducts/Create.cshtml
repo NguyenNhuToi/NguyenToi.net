@@ -1,0 +1,70 @@
+@model Nnt_TvcLesson12.Models.NntProduct
+
+@{
+    ViewData["Title"] = "Thêm mới sản phẩm";
+}
+
+<h1>Thêm mới sản phẩm</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <!-- QUAN TRỌNG: enctype="multipart/form-data" để upload file -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NntName" class="control-label">Name</label>
+                <input asp-for="NntName" class="form-control" />
+                <span asp-validation-for="NntName" class="text-danger"></span>
+            </div>
+
+            <!-- ĐỔI TỪ NntImage (string) THÀNH NntImageFile (IFormFile) -->
+            <div class="form-group">
+                <label asp-for="NntImageFile" class="control-label">Image</label>
+                <input asp-for="NntImageFile" type="file" class="form-control" accept="image/*" />
+                <span asp-validation-for="NntImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntPrice" class="control-label">Price</label>
+                <input asp-for="NntPrice" class="form-control" />
+                <span asp-validation-for="NntPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntSalePrice" class="control-label">SalePrice</label>
+                <input asp-for="NntSalePrice" class="form-control" />
+                <span asp-validation-for="NntSalePrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntStatus" class="control-label">Status</label>
+                <input asp-for="NntStatus" class="form-control" />
+                <span asp-validation-for="NntStatus" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntDescriptions" class="control-label">Descriptions</label>
+                <textarea asp-for="NntDescriptions" class="form-control"></textarea>
+                <span asp-validation-for="NntDescriptions" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntCategoryId" class="control-label">CategoryId</label>
+                <input asp-for="NntCategoryId" class="form-control" />
+                <span asp-validation-for="NntCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Lưu lại" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Về danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

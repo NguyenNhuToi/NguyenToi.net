@@ -1,0 +1,59 @@
+@model Nnt_TvcLesson12.Models.NntProduct
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<h1>Xóa sản phẩm</h1>
+
+<h4 class="text-danger">Bạn có chắc chắn muốn xóa sản phẩm này không?</h4>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntId)</dd>
+
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntName)</dd>
+
+        <!-- HIỂN THỊ ẢNH -->
+        <dt class="col-sm-2">Image</dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.NntImage))
+            {
+                <img src="~/Nnt_Product/@Model.NntImage" 
+                     width="120" height="120" 
+                     style="object-fit: cover; border-radius: 5px; border: 1px solid #ddd;" />
+            }
+            else
+            {
+                <span class="text-muted">No image</span>
+            }
+        </dd>
+
+        <dt class="col-sm-2">Price</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntPrice)</dd>
+
+        <dt class="col-sm-2">SalePrice</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntSalePrice)</dd>
+
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntStatus)</dd>
+
+        <dt class="col-sm-2">Descriptions</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntDescriptions)</dd>
+
+        <dt class="col-sm-2">CreatedDate</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntCreatedDate)</dd>
+
+        <dt class="col-sm-2">Category</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NntCategoryId)</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NntId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Về danh sách</a>
+    </form>
+</div>

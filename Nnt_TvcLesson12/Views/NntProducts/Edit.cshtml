@@ -1,0 +1,94 @@
+@model Nnt_TvcLesson12.Models.NntProduct
+
+@{
+    ViewData["Title"] = "Sửa sản phẩm";
+}
+
+<h1>Sửa sản phẩm</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <!-- QUAN TRỌNG: enctype="multipart/form-data" để upload file -->
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden field chứa ID sản phẩm -->
+            <input type="hidden" asp-for="NntId" />
+
+            <!-- Hidden field giữ tên ảnh cũ (nếu không chọn ảnh mới) -->
+            <input type="hidden" asp-for="NntImage" />
+
+            <div class="form-group">
+                <label asp-for="NntName" class="control-label">Name</label>
+                <input asp-for="NntName" class="form-control" />
+                <span asp-validation-for="NntName" class="text-danger"></span>
+            </div>
+
+            <!-- HIỂN THỊ ẢNH HIỆN TẠI -->
+            <div class="form-group">
+                <label class="control-label">Ảnh hiện tại</label>
+                <div>
+                    @if (!string.IsNullOrEmpty(Model.NntImage))
+                    {
+                        <img src="~/Nnt_Product/@Model.NntImage" 
+                             width="150" height="150" 
+                             style="object-fit: cover; border-radius: 8px; border: 1px solid #ddd;" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">Chưa có ảnh</span>
+                    }
+                </div>
+            </div>
+
+            <!-- CHỌN ẢNH MỚI -->
+            <div class="form-group">
+                <label asp-for="NntImageFile" class="control-label">Chọn ảnh mới (nếu muốn thay)</label>
+                <input asp-for="NntImageFile" type="file" class="form-control" accept="image/*" />
+                <span asp-validation-for="NntImageFile" class="text-danger"></span>
+                <small class="text-muted">Để trống nếu không muốn thay đổi ảnh.</small>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntPrice" class="control-label">Price</label>
+                <input asp-for="NntPrice" class="form-control" />
+                <span asp-validation-for="NntPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntSalePrice" class="control-label">SalePrice</label>
+                <input asp-for="NntSalePrice" class="form-control" />
+                <span asp-validation-for="NntSalePrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntStatus" class="control-label">Status</label>
+                <input asp-for="NntStatus" class="form-control" />
+                <span asp-validation-for="NntStatus" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntDescriptions" class="control-label">Descriptions</label>
+                <textarea asp-for="NntDescriptions" class="form-control"></textarea>
+                <span asp-validation-for="NntDescriptions" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NntCategoryId" class="control-label">CategoryId</label>
+                <input asp-for="NntCategoryId" class="form-control" />
+                <span asp-validation-for="NntCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Lưu lại" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Về danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
